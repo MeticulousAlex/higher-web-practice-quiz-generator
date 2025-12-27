@@ -1,18 +1,45 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0" />
-    <title>Генератор квизов</title>
-    <link
-      rel="stylesheet"
-      href="./css/pages/index.css" />
-  </head>
-  <body>
-    <script
-      type="module"
-      src="./js/pages/main.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quizzer</title>
+  <link rel="stylesheet" href="./css/base/variables.css">
+  <link rel="stylesheet" href="./fonts/fonts.css">
+  <link rel="stylesheet" href="./css/base/base.css">
+  <link rel="stylesheet" href="./css/components/header.css">
+  <link rel="stylesheet" href="./css/components/menu.css"> 
+  <link rel="stylesheet" href="./css/components/toast.css">
+  <link rel="stylesheet" href="./css/pages/index.css">
+</head>
+<body>
+  <main class="main">
+    <div class="container">
+      <form class="json-form" id="jsonForm">
+        <h1 class="json-form__title">Генератор квизов</h1>
+        <p class="json-form__caption">Вставьте JSON...</p>
+        
+        <div class="json-form__group">
+          <label class="json-form__label" for="jsonInput">
+            Ваш JSON
+          </label>
+          <textarea
+            class="json-form__textarea"
+            id="jsonInput"
+            name="jsonInput"
+            rows="9"
+            placeholder='{
+«title»: «Placeholder»,
+«questions»: []
+}'
+            aria-describedby="jsonHint jsonError"
+          ></textarea>
+        </div>
+        <button type="submit" class="json-form__button">Сгенерировать</button>  
+      </form>
+      </div>
+  </main>
+
+  <script type="module" src="./js/pages/main.js"></script>
+</body>
 </html>

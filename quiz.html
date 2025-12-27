@@ -1,18 +1,55 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0" />
-    <title>Прохождение теста</title>
-    <link
-      rel="stylesheet"
-      href="./css/pages/quiz.css" />
-  </head>
-  <body>
-    <script
-      type="module"
-      src="./js/pages/quiz.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Generator - Прохождение теста</title>
+  <link rel="stylesheet" href="./css/base/variables.css">
+  <link rel="stylesheet" href="./fonts/fonts.css">
+  <link rel="stylesheet" href="./css/base/base.css">
+  <link rel="stylesheet" href="./css/components/menu.css">
+  <link rel="stylesheet" href="./css/components/header.css">
+  <link rel="stylesheet" href="./css/components//modal.css">
+  <link rel="stylesheet" href="./css/pages/quiz.css">
+</head>
+<body>
+  <main class="quiz">
+    <div class="quiz__container">
+      <h1 class="quiz__title"></h1>
+      <p class="quiz__subtitle"></p>
+      <div class="progress">
+        <p class="progress__text">
+          Вопрос <span class="progress__current">1</span> из <span class="progress__total">10</span>
+        </p>
+        <div class="progress__bar">
+          <div class="progress__fill" style="width: 10%;"></div>
+        </div>
+      </div>
+      <form class="question">
+        <h2 class="question__text"></h2>
+        <p class="question__hint"></p>
+        
+        <ul class="question__options"></ul>
+        <span class="question__multiple-feedback"></span>
+        <button type="submit" class="question__button">
+          Следующий вопрос
+        </button>
+      </form>
+    </div>
+    
+  </main>
+  <p class="quiz__legal">Учебный проект 2025</p>
+
+  <template id="option-template">
+    <div class="option">
+      <label class="option__label">
+        <input type="checkbox" class="option__input" name="question" value="" />
+        <span class="option__text"></span>
+      </label>
+      <span class="option__feedback"></span>
+    </div>
+  </template>
+
+  <script type="module" src="./js/pages/quiz.js"></script>
+</body>
 </html>

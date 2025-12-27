@@ -1,0 +1,68 @@
+:root {
+  /* Colors */
+  --color-primary: #3B82F6;
+  --color-primary-rgb: 59, 130, 246;
+  --color-success: #10B981;
+  --color-error: #EF4444;
+  
+  --color-text: #111827;
+  --color-text-secondary: #6B7280;
+  
+  --color-background: #F9FAFB;
+  --color-surface: #FFFFFF;
+  --color-border: #E5E7EB;
+  
+  /* fonts */
+  --font-family-base: Inter, Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  --font-family-mono: JetBrainsMono, 'Courier New', Courier, monospace;
+
+  --font-size-xs:12px;
+  --font-size-small: 14px;
+  --font-size-base: 16px;
+  --font-size-h3: 18px;
+  --font-size-h2: 24px;
+  --font-size-h1: 32px;  
+  
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  
+  --line-height-base: 1.5;
+  --line-height-md: 1.4; 
+  --line-heigth-sm: 1.3;
+  --line-heigth-xs:1.2;
+
+  /* Spacing */
+  --spacing-2xs: 4px;
+  --spacing-xs: 8px;
+  --spacing-sm: 12px;
+  --spacing-base: 16px;
+  --spacing-md: 20px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 48px;
+  --spacing-3xl: 64px;
+  
+  --grid-gutter-desktop: 24px;
+  --grid-gutter-tablet: 20px;
+  --grid-gutter-mobile: 8px;
+  
+  /* Border Radius */
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+  
+  /* Shadows */
+  --shadow-base: 0 2px 8px 0px rgba(0, 0, 0, 0.1);
+
+  
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.3s ease;
+  
+  /* Z-index */
+  --z-index-header: 100;
+  --z-index-modal: 500;
+  --z-index-toast: 1000;
+}

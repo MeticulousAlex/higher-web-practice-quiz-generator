@@ -1,18 +1,37 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0" />
-    <title>Ваши квизы</title>
-    <link
-      rel="stylesheet"
-      href="./css/pages/quizzes.css" />
-  </head>
-  <body>
-    <script
-      type="module"
-      src="./js/pages/quizzes.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Generator - Мои тесты</title>
+  <link rel="stylesheet" href="./css/base/variables.css">
+  <link rel="stylesheet" href="./fonts/fonts.css">
+  <link rel="stylesheet" href="./css/base/base.css">
+  <link rel="stylesheet" href="./css/components/header.css">
+  <link rel="stylesheet" href="./css/components/menu.css">
+  <link rel="stylesheet" href="./css/pages/quizzes.css">
+</head>
+<body>
+  <main class="quizzes">
+    <div class="container">
+        <h1 class="quizzes__title">Ваши квизы</h1>
+      <div class="quizzes__grid" id="quizzesGrid"></div>
+      <div class="quizzes__empty" id="emptyState" style="display: none;">
+        <h2 class="quizzes__empty-title">У вас нет сохранённых квизов(</h2>
+        <p class="quizzes__empty-text">
+          Но вы можете добавить!
+        </p>
+        <button class='quizzes__empty-button'>
+          <a href="./index.html" class="quizzes__empty-link">
+          Добавить квиз
+        </a>
+        </button>
+        
+      </div>
+    </div>
+    
+  </main>
+  <p class="quizzes__legal">Учебный проект 2025</p>
+  <script type="module" src="./js/pages/quizzes.js"></script>
+</body>
 </html>

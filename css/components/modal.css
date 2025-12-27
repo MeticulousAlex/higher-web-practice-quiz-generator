@@ -1,0 +1,111 @@
+.modal {
+  display: none;
+} 
+
+.modal_visible {
+  max-width:79%;
+  margin:auto;
+  display:flex;
+  box-sizing: border-box;
+}
+
+.modal__content {
+  background-color: transparent;
+  border-radius: var(--border-radius-md);
+  width: 100%;
+  animation: modalAppear var(--transition-base);
+}
+
+@keyframes modalAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.modal__title {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-heigth-xs);
+  color: var(--color-text);
+  margin-bottom: var(--spacing-xs);
+}
+
+.modal__result {
+  color: var(--color-text);
+  margin-bottom: var(--spacing-xs);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-base);
+}
+
+.modal__text{
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-md);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-md);
+}
+
+.modal__actions {
+  display: flex;
+  gap: var(--spacing-xs);
+}
+
+.modal__button {
+  padding: var(--spacing-xs) var(--spacing-base);
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  text-align: center;
+  cursor: pointer;
+  transition: opacity var(--transition-fast);
+}
+
+.modal__button:hover {
+  opacity: 0.85
+}
+
+.modal__button_primary {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.modal__button_secondary {
+  background-color: var(--color-surface);
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+}
+
+@media screen and (max-width:1200px){
+  .modal_visible{
+    max-width: 58.6%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .modal_visible{
+    position:relative;
+    height:60%;
+    max-width:79%;
+    margin: auto auto 0;
+  }
+
+  .modal__content {
+    padding-bottom: var(--spacing-lg);
+  }
+
+  .modal__actions{
+    position: absolute;
+    width:100%;
+    bottom: var(--spacing-lg);
+    flex-direction: column;
+  }
+  .modal__button {
+    width: 100%;
+  }
+}

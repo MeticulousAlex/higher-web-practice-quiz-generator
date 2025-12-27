@@ -1,0 +1,94 @@
+.main {
+  min-height: calc(100vh - 74px);
+  padding-top:var(--spacing-2xl);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.json-form {
+  max-width:752px;
+  width: 100%;
+  margin: 0 auto;
+  padding-bottom: var(--spacing-3xl);
+}
+
+.json-form__title {
+  color: var(--color-text);
+  margin-bottom: var(--spacing-xs);
+}
+
+.json-form__caption{
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-xl);
+}
+
+.json-form__group {
+  margin-bottom: var(--spacing-md);
+}
+
+.json-form__label {
+  display: block;
+  margin-bottom: var(--spacing-2xs);
+  padding-left: var(--spacing-sm);
+  font-weight: var(--font-weight-normal);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-xs);
+}
+
+.json-form__textarea {
+  width: 100%;
+  min-height: 230px;
+  padding: var(--spacing-sm);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-md);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-small);
+  line-height: 1.6;
+  resize: none;
+  box-shadow: var(--shadow-base);
+  transition: border-color var(--transition-fast);
+}
+
+.json-form__textarea:focus {
+  border-color: var(--color-primary);
+}
+
+.json-form__textarea_error {
+  border-color: var(--color-error);
+}
+
+.json-form__button {
+  background-color: rgba(var(--color-primary-rgb), 1);
+  color: var(--color-surface);
+  padding: var(--spacing-xs) var(--spacing-base);
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.json-form__button:hover {
+  background-color: rgba(var(--color-primary-rgb), 0.85)
+}
+
+@media screen and (max-width: 767px) {
+
+  .json-form__title{
+    font-size: var(--font-size-h2);
+    font-weight: var(--font-weight-semibold);
+  }
+
+  .json-form{
+    padding: 0;
+  }
+
+  .json-form__group{
+    margin-bottom: var(--spacing-3xl);
+  }
+
+  .json-form__button {
+    width: 100%;
+  }
+}
