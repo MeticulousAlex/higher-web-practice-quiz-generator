@@ -21,9 +21,9 @@ const header = new Header({
 header.mount('body');
 
 const quizzes = document.querySelector('.quizzes');
-const quizzesGrid = document.getElementById('quizzesGrid');
+const quizzesGrid = document.querySelector('.quizzes__grid');
 const pageTitle = document.querySelector('.quizzes__title');
-const emptyState = document.getElementById('emptyState');
+const emptyState = document.querySelector('.quizzes__no-quiz');
 
 async function loadQuizzes() {
   try {
@@ -112,16 +112,16 @@ function getQuestionWord(count) {
 
 function showEmptyState() {
   quizzes.classList.add('quizzes_empty')
-  quizzesGrid.style.display = 'none';
-  pageTitle.style.display = 'none';
-  emptyState.style.display = 'block';
+  quizzesGrid.classList.add('quizzes__grid_hidden');
+  pageTitle.classList.add('quizzes__title_hidden');
+  emptyState.classList.remove('quizzes__no-quiz_hidden')
 }
 
 function hideEmptyState() {
   quizzes.classList.remove('quizzes_empty')
-  quizzesGrid.style.display = 'grid';
-  pageTitle.style.display = 'block';
-  emptyState.style.display = 'none';
+  quizzesGrid.classList.remove('quizzes__grid_hidden');
+  pageTitle.classList.remove('quizzes__title_hidden');
+  emptyState.classList.add('quizzes__no-quiz_hidden')
 }
 
 loadQuizzes();

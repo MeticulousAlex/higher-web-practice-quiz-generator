@@ -45,10 +45,6 @@ modal.mount('header')
 const quiz = document.querySelector('.quiz');
 const quizTitle = document.querySelector('.quiz__title');
 const quizSubtitle = document.querySelector('.quiz__subtitle');
-const questionForm = document.querySelector('.question');
-const questionText = document.querySelector('.question__text');
-const questionHint = document.querySelector('.question__hint');
-const questionOptions = document.querySelector('.question__options');
 const multipleOptionsFeedback = document.querySelector('.question__multiple-feedback');
 const submitButton = document.querySelector('.question__button');
 const currentQuestionSpan = document.querySelector('.progress__current');
@@ -102,20 +98,23 @@ function renderQuestion() {
 
   isAnswered = false;
 
+  const templateId = question.type === 'single' ? 'single-question-template' : 'multiple-question-template';
+  const template = document.getElementById(templateId);
+  const questionElement = template.content.cloneNode(true);
+
+  const questionText = questionElement.querySelector('.question__text');
+  const questionOptions = questionElement.querySelector('.question__options');
+  
   questionText.textContent = question.text;
 
-  if (question.type === 'single') {
-    questionHint.textContent = 'Выберите один вариант ответа';
-    
-  } else {
-    questionHint.textContent = 'Выберите несколько вариантов ответа';
-  }
-
-  questionOptions.innerHTML = '';
   question.options.forEach(option => {
     const optionElement = createOption(option, question.type);
     questionOptions.appendChild(optionElement);
   });
+
+  const questionContainer = document.getElementById('question-container');
+  questionContainer.innerHTML = '';
+  questionContainer.appendChild(questionElement);
 
   multipleOptionsFeedback.classList.remove('question__multiple-feedback_visible');
   submitButton.textContent = 'Ответить';
@@ -124,15 +123,15 @@ function renderQuestion() {
 }
 
 function createOption(option, questionType) {
-  const template = document.getElementById('option-template');
+
+  const templateId = questionType === 'single' ? 'option-template' : 'checkbox-option-template';
+  const template = document.getElementById(templateId);
   const optionElement = template.content.cloneNode(true);
   
   const input = optionElement.querySelector('.option__input');
   const text = optionElement.querySelector('.option__text');
-  const feedback = optionElement.querySelector('.option__feedback')
+  const feedback = optionElement.querySelector('.option__feedback');
   
-  input.type = questionType == 'single' ? 'radio' : 'checkbox';
-  input.classList.add(`option__input_${questionType}`);
   input.value = option.id;
   input.name = 'question';
   text.textContent = option.text;
@@ -159,7 +158,7 @@ function updateURL() {
   window.history.pushState({}, '', newURL);
 }
 
-questionForm.addEventListener('submit', (e) => {
+quiz.addEventListener('submit', (e) => {
   e.preventDefault();
 
   if (isAnswered) {
@@ -171,6 +170,8 @@ questionForm.addEventListener('submit', (e) => {
 
 function handleAnswerSubmit() {
   const question = currentQuiz.questions[currentQuestionIndex];
+  const questionContainer = document.getElementById('question-container');
+  const questionOptions = questionContainer.querySelector('.question__options');
 
   const selectedInputs = questionOptions.querySelectorAll('input:checked');
 
@@ -194,6 +195,8 @@ function handleAnswerSubmit() {
 }
 
 function highlightOptions(question, selectedIds, result) {
+  const questionContainer = document.getElementById('question-container');
+  const questionOptions = questionContainer.querySelector('.question__options');
   const optionElements = questionOptions.querySelectorAll('.option');
   
   optionElements.forEach((optionElement, index) => {
@@ -220,17 +223,17 @@ function highlightOptions(question, selectedIds, result) {
   });
 
   if (question.type === 'multiple' && result.isCorrect.hasCorrect && !result.isCorrect.correct ){
-    multipleOptionsFeedback.textContent = 'Часть ответов верна, но вы пропустили несколько правильных опций'
+    multipleOptionsFeedback.textContent = 'Часть ответов верна, но вы пропустили несколько правильных опций'
+    multipleOptionsFeedback.classList.add('question__multiple-feedback_visible');
   } else if(question.type === 'multiple' && !result.isCorrect.hasCorrect && result.isCorrect.hasWrong){
     multipleOptionsFeedback.textContent = 'Правильные ответы не выбраны. Увы!'
+    multipleOptionsFeedback.classList.add('question__multiple-feedback_visible');
   }
-
-  multipleOptionsFeedback.classList.add('question__multiple-feedback_visible');
-
 }
 
 function disableOptions() {
-  const labels = questionOptions.querySelectorAll('.option__label');
+  const questionContainer = document.getElementById('question-container');
+  const labels = questionContainer.querySelectorAll('.option__label');
 
   labels.forEach(label => {
     label.querySelector('.option__input').disabled = true
@@ -266,20 +269,20 @@ function showResults() {
   if (percentage == 100) {
     modal.setAllText({
       title:'Тест завершён!',
-      result:'Вы ответили правильно на все вопросы 🎉',
-      text:'Ваши знания в UX-дизайне на высоте — вы уверенно разбираетесь в пользовательских сценариях и принципах проектирования интерфейсов.'
+      result:'Вы ответили правильно на все вопросы 🎉',
+      text:'Ваши знания в UX-дизайне на высоте — вы уверенно разбираетесь в пользовательских сценариях и принципах проектирования интерфейсов.'
     })
   } else if (percentage >= 50) {
     modal.setAllText({
       title: 'Хороший результат!',
-      result:`Вы ответили правильно на ${correctAnswersCount} из ${totalQuestions} вопросов`,
-      text:'Отличная попытка! Вы хорошо понимаете UX-подход, но некоторые темы стоит освежить. Пройдите тест ещё раз, чтобы закрепить знания.'
+      result:`Вы ответили правильно на ${correctAnswersCount} из ${totalQuestions} вопросов`,
+      text:'Отличная попытка! Вы хорошо понимаете UX-подход, но некоторые темы стоит освежить. Пройдите тест ещё раз, чтобы закрепить знания.'
     })
   } else {
         modal.setAllText({
-      title: 'Не расстраивайтесь!',
-      result:`Вы ответили правильно только на ${correctAnswersCount} из ${totalQuestions} вопросов`,
-      text:'Не переживайте — ошибки это часть обучения. Попробуйте пройти тест снова, чтобы закрепить материал и улучшить результат.'
+      title: 'Не расстраивайтесь!',
+      result:`Вы ответили правильно только на ${correctAnswersCount} из ${totalQuestions} вопросов`,
+      text:'Не переживайте — ошибки это часть обучения. Попробуйте пройти тест снова, чтобы закрепить материал и улучшить результат.'
     })
   }
 

@@ -1,7 +1,7 @@
 import { Header } from '../components/Header.js'
 import { Toast } from '../components/Toast.js';
 import { validateQuizJson } from '../utils/validation.js';
-import { saveQuiz } from '../utils/storage.js';
+import { clearAllQuizzes, saveQuiz } from '../utils/storage.js';
 import { Menu } from '../components/Menu.js';
 
 const menuLinks = [
@@ -26,6 +26,7 @@ const jsonInput = document.getElementById('jsonInput');
 
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
+  
   jsonInput.classList.remove('json-form__textarea_error');
 
   const jsonText = jsonInput.value.trim();

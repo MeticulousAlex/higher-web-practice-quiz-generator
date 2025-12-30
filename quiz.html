@@ -22,14 +22,11 @@
           Вопрос <span class="progress__current">1</span> из <span class="progress__total">10</span>
         </p>
         <div class="progress__bar">
-          <div class="progress__fill" style="width: 10%;"></div>
+          <div class="progress__fill"></div>
         </div>
       </div>
-      <form class="question">
-        <h2 class="question__text"></h2>
-        <p class="question__hint"></p>
-        
-        <ul class="question__options"></ul>
+      <form class="question-form">
+        <div id="question-container"></div>
         <span class="question__multiple-feedback"></span>
         <button type="submit" class="question__button">
           Следующий вопрос
@@ -40,10 +37,36 @@
   </main>
   <p class="quiz__legal">Учебный проект 2025</p>
 
+  <template id="single-question-template">
+    <div class="question" data-type="single">
+      <h3 class="question__text"></h3>
+      <p class="question__hint">Выберите один вариант ответа</p>
+      <div class="question__options"></div>
+    </div>
+  </template>
+
+  <template id="multiple-question-template">
+    <div class="question" data-type="multiple">
+      <h3 class="question__text"></h3>
+      <p class="question__hint">Выберите один или несколько вариантов ответа</p>
+      <div class="question__options"></div>
+    </div>
+  </template>
+
   <template id="option-template">
     <div class="option">
       <label class="option__label">
-        <input type="checkbox" class="option__input" name="question" value="" />
+        <input type="radio" class="option__input option__input_single" name="question" value="" />
+        <span class="option__text"></span>
+      </label>
+      <span class="option__feedback"></span>
+    </div>
+  </template>
+
+  <template id="checkbox-option-template">
+    <div class="option">
+      <label class="option__label">
+        <input type="checkbox" class="option__input option__input_multiple" name="question" value="" />
         <span class="option__text"></span>
       </label>
       <span class="option__feedback"></span>

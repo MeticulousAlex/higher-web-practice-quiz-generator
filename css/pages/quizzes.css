@@ -1,9 +1,9 @@
 .quizzes {
   padding: var(--spacing-3xl) 0 0;
-  position: relative;
 }
 
 .quizzes_empty{
+  display:none;
   display:flex;
   align-items: center;
   justify-content: center;
@@ -16,6 +16,10 @@
   color: var(--color-text);
   margin-bottom: var(--spacing-md);
   align-self: flex-start;
+}
+
+.quizzes__title_hidden{
+  display:none;
 }
 
 .quizzes__subtitle {
@@ -31,44 +35,55 @@
   margin-bottom: var(--spacing-2xl);
 }
 
-.quizzes__empty {
+.quizzes__grid_hidden{
+  display:none;
+}
+
+.quizzes__no-quiz {
   display:flex;
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform: translateX(-50%) translateY(-50%);
   flex-direction: column;
   max-width:752px;
   width:100%;
-
 }
 
-.quizzes__empty-title {
+.quizzes__no-quiz_hidden{
+  display:none;
+}
+
+.quizzes__no-quiz-title {
   font-size: var(--font-size-h1) ;
   color: var(--color-text);
   margin-bottom: var(--spacing-xs);
 }
 
-.quizzes__empty-text {
+.quizzes__no-quiz-text {
   color: var(--color-text-secondary);
   margin-bottom: var(--spacing-lg);
 }
 
-.quizzes__empty-button {
-  display: inline-block;
+.quizzes__no-quiz-button {
+  display: flex;
+  align-self:flex-start;
   background-color: var(--color-primary);
-  
-  padding: var(--spacing-xs) var(--spacing-base);
   border-radius: var(--border-radius-sm);
   transition: opacity var(--transition-fast);
   text-align: center;
 }
 
-.quizzes__empty-button:hover {
+.quizzes__no-quiz-button:hover {
   opacity:0.85;
 }
 
-.quizzes__empty-link{
+.quizzes__no-quiz-link{
   width:100%;
   height: 100%;
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-medium);
+  padding: var(--spacing-xs) var(--spacing-base);
   color: white;
 }
 
@@ -150,6 +165,10 @@
     gap: var(--grid-gutter-tablet);
   }
 
+  .quizzes__no-quiz{
+    max-width:58.6%;
+  }
+
   .quizzes__legal{
     display:none;
   }
@@ -165,6 +184,7 @@
   }
 
   .quizzes__grid {
+    width: 100%;
     grid-template-columns: 1fr;
     gap: var(--grid-gutter-mobile);
   }
@@ -173,15 +193,24 @@
     padding: var(--spacing-base);
   }
 
-  .quizzes__empty-title{
+  .quizzes__no-quiz{
+    max-width:79%;
+    top:auto;
+    bottom:0;
+    height: 50%;
+    transform: translateX(-50%);
+  }
+
+  .quizzes__no-quiz-title{
     font-size: var(--font-size-h2);
     font-weight: var(--font-weight-semibold);
   }
 
-  .quizzes__empty-button{
+  .quizzes__no-quiz-button{
     position:absolute;
     bottom: var(--spacing-2xl);
     left:50%;
+    bottom: var(--spacing-lg);
     transform: translateX(-50%);
     width:79%;
   }
